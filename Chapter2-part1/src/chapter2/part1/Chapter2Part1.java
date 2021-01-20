@@ -25,6 +25,9 @@ public class Chapter2Part1 {
         int favoriteNumber = 42;
         double numberWithDecimal = 1.23;
         
+        boolean areYouHungry = true;
+        char singleLetter = 'E';
+        
         
         System.out.println("Hi there " + myFirstName + " " + myLastName);
         System.out.println("if we have some really long line of text and "
