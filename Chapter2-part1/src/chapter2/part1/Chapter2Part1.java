@@ -106,6 +106,7 @@ public class Chapter2Part1 {
         final double SALES_TAX_RATE = .06;
 
         String sentence = "Happy Monday!";
+        String thisIsTheHardWay = new String("Why DO this?!?!");
 
         // strings can't actually change, we make new ones in memory
         sentence = sentence + " Don't' forget to start project 1!";
@@ -113,41 +114,51 @@ public class Chapter2Part1 {
         System.out.println(sentence);
 
         Scanner keyboard = new Scanner(System.in);
-        
+
         System.out.println("Enter your name: ");
         String userName = keyboard.nextLine();
-        
+
         System.out.println("Hi there " + userName);
-        
+
         int magicNumber = 42;
-        
+
         System.out.println(userName + " guess a number 1-100!");
-        
+
         // tries to turn the string from nextLine into an integer
         int guess = Integer.parseInt(keyboard.nextLine());
-        
+
         System.out.println("The number was " + magicNumber + " - You guessed " + guess);
-        
+
         System.out.println("Enter a number 2-10");
         magicNumber = Integer.parseInt(keyboard.nextLine());
         // or convert to a double Double.parseDouble(keyboard.nextLine())
-        
+
         magicNumber *= 9;
         System.out.println("Your number * 9 is " + magicNumber);
-        
+
         int firstDigit = magicNumber / 10;
         int secondDigit = magicNumber % 10;
-        
+
         System.out.println("The tens place is: " + firstDigit);
         System.out.println("The ones place is: " + secondDigit);
-        
+
         magicNumber = firstDigit + secondDigit;
-        
+
         System.out.println("The sum of the tens place and the ones place is: " + magicNumber);
-        
-        
-        
-        
+
+        String className = "CIS 1500";
+        className = className + " - Intro to Programming";
+
+        System.out.println("Username: " + userName);
+        System.out.println("Replace all the vowels with 'oob'");
+        userName = userName.toLowerCase();
+        userName = userName.replace("o", "oob");
+        userName = userName.replace("a", "oob");
+        userName = userName.replace("e", "oob");
+        userName = userName.replace("i", "oob");
+        userName = userName.replace("u", "oob");
+        System.out.println("Username: " + userName);
+
     }
 
 }
