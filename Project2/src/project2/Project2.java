@@ -1,21 +1,73 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package project2;
 
-/**
- *
- * @author EricC
- */
+import java.util.Random;
+import java.util.Scanner;
+
 public class Project2 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        Scanner keyboard = new Scanner(System.in);
+        Random random = new Random();
+        String playAgain = "y";
+
+        while (playAgain.equalsIgnoreCase("Y")) {
+            int xTilt = random.nextInt(21) - 10;
+            int yTilt = random.nextInt(21) - 10;
+            int height = 10;
+
+            //boolean isSelfDestructing = false;
+            while (height > 0) {
+                System.out.printf("%d above the surface - x axis tilt %d - y axis tilt %d\n",
+                        height, xTilt, yTilt);
+
+                height--;
+
+                System.out.println("Send a command to the lander");
+                String command = keyboard.nextLine();
+
+                if (command.equalsIgnoreCase("x+")) {
+                    xTilt++;
+                } else if (command.equalsIgnoreCase("x-")) {
+                    xTilt--;
+                } else if (command.equalsIgnoreCase("y+")) {
+                    yTilt++;
+                } else if (command.equalsIgnoreCase("y-")) {
+                    yTilt--;
+                } else if (command.equalsIgnoreCase("thrusters")) {
+                    height += 2;
+                } else if (command.equalsIgnoreCase("nothing")) {
+
+                } else if (command.equalsIgnoreCase("self destruct")) {
+                    // you might have done this in the outer loop
+                    //isSelfDestructing = true;
+
+                    String code = "";
+                    while (!code.equalsIgnoreCase("cancel")) {
+                        System.out.println("Ooops, you shouldn't have entered that, "
+                                + "please enter the cancellation code!");
+                        code = keyboard.nextLine();
+                    }
+                } else {
+                    System.out.println("Invalid command, please use one of the following: "
+                            + "x+, x-, y+, y-, nothing, thrusters, self destruct");
+                    // invalid commands don't cause you to fall?
+                    height++;
+                }
+
+            }
+
+            if (xTilt == 0 && yTilt == 0) {
+                System.out.println("You have successfully landed!");
+            } else {
+                System.out.println("The lander was not level and broke upon landing, "
+                        + "good thing there weren't people in there!");
+            }
+
+            System.out.println("Do you want to play again? Y/N");
+            playAgain = keyboard.nextLine();
+        }
+
     }
-    
+
 }
