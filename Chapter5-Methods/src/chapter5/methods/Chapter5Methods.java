@@ -10,7 +10,7 @@ public class Chapter5Methods {
     // class level static value - this is usable in all methods - try and avoid this?
     static Scanner keyboard = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         String daysUntilDueQuestion = "How many days until the project is due?";
         //Scanner keyboard = new Scanner(System.in);
