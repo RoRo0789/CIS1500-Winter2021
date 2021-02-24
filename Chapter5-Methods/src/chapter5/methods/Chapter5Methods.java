@@ -1,5 +1,8 @@
 package chapter5.methods;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Chapter5Methods {
@@ -9,15 +12,40 @@ public class Chapter5Methods {
 
     public static void main(String[] args) {
 
+        String daysUntilDueQuestion = "How many days until the project is due?";
         //Scanner keyboard = new Scanner(System.in);
-        int daysUntilDue = askTheUserForAnIntAnswer(
-                "How many days until the project is due?");
+        int daysUntilDue = askTheUserForAnIntAnswer(daysUntilDueQuestion);
 
         int daysRequiredToCompleteProject = askTheUserForAnIntAnswer(
                 "How many days will it take you to complete the project?");
-
+        
+        System.out.println("daysUntilDue before method:" + daysUntilDue);
         calculateWhenYouShouldStartTheProject(daysUntilDue, daysRequiredToCompleteProject);
+        System.out.println("daysUntilDue after method:" + daysUntilDue);
+        
+        
+        writeFile("TestFile.txt", "Testing 123s");
+        
+    }
+    
+    public static void writeFile(String filename, String contents) throws FileNotFoundException
+    {
+        PrintWriter fileWriter = new PrintWriter(filename);
+        fileWriter.println(contents);
+        fileWriter.close();
+    }
 
+    public static int getIntegerBetween1And10() {
+        int result = 0;
+        
+        // while (!(result >= 1 && result <= 10))
+        while (result < 1 || result > 10) {
+            System.out.println("Enter a number between 1 and 10");
+            String answer = keyboard.nextLine();
+            result = Integer.parseInt(answer);
+        }
+        
+        return result;
     }
 
     public static String rockPaperScissorsMenu() {
@@ -41,6 +69,10 @@ public class Chapter5Methods {
             System.out.printf("You should sooner than %d days\n",
                     daysUntilDue - daysRequiredToCompleteProject);
         }
+        
+        // this doesn't change the value in main, it was passed as a copy ( by value )
+        daysUntilDue += 10;
+        System.out.println("daysUntilDue inside the method:" + daysUntilDue);
     }
 
     public static int askTheUserForAnIntAnswer(String question) {
@@ -48,6 +80,7 @@ public class Chapter5Methods {
         System.out.println(question);
         String answer = keyboard.nextLine();
         int result = Integer.parseInt(answer);
+        question += " I'm inside the method, let me out!";
         return result;
     }
 
