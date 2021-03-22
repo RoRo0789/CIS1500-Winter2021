@@ -6,7 +6,7 @@ public class Rectangle {
     private int length;
     private int width;
     private int area; // if this is an attribute, instead of calcuting it every time
-                        // it  might get 'stale'
+    // it  might get 'stale'
 
     // constructor - no return type - it's job is to 'construct the object'
     public Rectangle() {
@@ -14,12 +14,28 @@ public class Rectangle {
         width = 0;
         area = 0;
     }
-    
+
     // constructor with parameters - parametized
-    public Rectangle(int length, int width)
-    {
+    public Rectangle(int length, int width) {
         setLength(length);
         setWidth(width);
+    }
+
+    public Rectangle addTogether(Rectangle other) {
+        return new Rectangle(length + other.length, width + other.width);
+    }
+
+    public boolean isBiggerThan(Rectangle other) {
+        return area > other.area;
+    }
+    
+    public boolean isSmallerThan(Rectangle other) {
+        return area < other.area;
+    }
+    
+    public boolean isSameSize(Rectangle other) {
+        return ( length == other.length && width == other.width ||
+                length == other.width && width == other.length );
     }
 
     // methods - include public methods for people to interact with our class

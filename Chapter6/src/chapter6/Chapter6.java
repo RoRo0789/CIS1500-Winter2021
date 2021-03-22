@@ -10,10 +10,16 @@ public class Chapter6 {
         //smallRectangle.setWidth(5);
         printRectangle(smallRectangle);
         
+               
         Rectangle largeRectangle = new Rectangle();
+        System.out.println(largeRectangle);
         largeRectangle.setLength(20);
         largeRectangle.setWidth(50);
         printRectangle(largeRectangle);
+        
+        
+        Rectangle weirdMathRectangle = largeRectangle.addTogether(smallRectangle);
+        printRectangle(weirdMathRectangle);
         
         sum(1, 2);
         sum("1", "2");
@@ -36,6 +42,8 @@ public class Chapter6 {
     
     public static void printRectangle(Rectangle rectangle)
     {
+        System.out.println(rectangle);
+        //rectangle.setLength(100);
         System.out.println("Length of our rectangle: " + rectangle.getLength());
         System.out.println("Width of our rectangle: " + rectangle.getWidth());
         System.out.println("Area of our rectangle: " + rectangle.getArea());
