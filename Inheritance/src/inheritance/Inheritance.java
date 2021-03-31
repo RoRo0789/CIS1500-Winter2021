@@ -1,6 +1,8 @@
 
 package inheritance;
 
+import java.util.ArrayList;
+
 public class Inheritance {
 
     public static void main(String[] args) {
@@ -24,6 +26,17 @@ public class Inheritance {
         bigSqaure.setSideLength(0, 50);
         
         System.out.println(bigSqaure);
+        
+        ArrayList<Polygon> polygons = new ArrayList<Polygon>();
+        polygons.add(octogon);
+        polygons.add(rectangle);
+        polygons.add(bigSqaure);
+        
+        for ( Polygon shape : polygons ){
+            String result = shape.toString();
+            
+            System.out.println(result);
+        }
         
     }
     

@@ -8,7 +8,7 @@ public class Polygon {
     private int numberOfSides;
     private ArrayList<Integer> sideLengths;
     private String name;
-
+    
     public Polygon(String name, int numberofSides) {
         this.name = name;
         if (numberofSides > 0) {
