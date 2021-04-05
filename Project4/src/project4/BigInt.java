@@ -2,19 +2,33 @@ package project4;
 
 public class BigInt {
 
+    public BigInt()
+    {
+        // makes empty big Int
+    }
+    
     public BigInt(String value) {
         // fixme!
     }
 
     private boolean isBigger(BigInt other) {
-        return true // fixme
+        return true; // fixme
     }
 
     public BigInt add(BigInt other) {
         // do something
-
+        BigInt newResult = new BigInt();
         // do not change yourself or the other, return a new big int
-        return new BigInt();
+        
+        // do stuff here to add digits to newResult
+        
+        
+        // 123
+        // -45
+        // ---
+        //  78
+        
+        return newResult;
     }
 
     public BigInt subtract(BigInt other) {
@@ -32,6 +46,9 @@ public class BigInt {
     public String toString() {
         // return a nicely formatted string with thousands seperator
         // ie -12,345,678
+        
+        StringBuilder stringBuilder = new StringBuilder();
+        
         return "";
     }
 }

@@ -19,6 +19,13 @@ public class BigIntTest {
 
     @Test
     public void testAddTwoPositives() {
+        BigInt first = new BigInt("123");
+        BigInt second = new BigInt("234");
+        
+        BigInt result = first.add(second);
+        String actualValue = result.toString();
+        
+        assertEquals("357", actualValue);
     }
     
     @Test
