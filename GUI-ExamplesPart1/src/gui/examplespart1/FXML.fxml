@@ -7,16 +7,15 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="gui.examplespart1.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.examplespart1.FXMLController">
    <children>
       <BorderPane layoutX="-3.0" layoutY="-2.0" prefHeight="407.0" prefWidth="606.0">
          <bottom>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#firstButton" text="Button" />
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Button mnemonicParsing="false" text="Button" />
+                  <Button fx:id="firstButton" mnemonicParsing="false" onAction="#firstButton" text="Button" />
+                  <Button fx:id="secondButton" mnemonicParsing="false" onAction="#secondButton" text="Button" />
+                  <Button fx:id="thirdButton" mnemonicParsing="false" onAction="#firstButton" text="Button" />
                </children>
             </HBox>
          </bottom>

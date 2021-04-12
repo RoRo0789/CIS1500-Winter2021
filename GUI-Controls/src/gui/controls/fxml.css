@@ -1,0 +1,16 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-font-family: "comic sans ms";
+}
+
+.label {
+    -fx-font-family: "comic sans ms";
+}
+
+.radio-button{
+    -fx-wrap-text: true;
+    -fx-font-size: 9pt;
+}

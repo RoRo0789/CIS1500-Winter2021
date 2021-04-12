@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
@@ -24,6 +25,12 @@ public class FXMLController implements Initializable {
     private Label pcStatsLabel;
     @FXML
     private TextArea textArea;
+    @FXML
+    private Button firstButton;
+    @FXML
+    private Button secondButton;
+    @FXML
+    private Button thirdButton;
 
     /**
      * Initializes the controller class.
@@ -35,7 +42,18 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void firstButton(ActionEvent event) {
-        textArea.appendText("Clicked!\n");
+        // used by first and third buttons
+        if ( event.getSource() == firstButton ){
+            textArea.appendText("Clicked first button!\n");
+        }
+        else if ( event.getSource() == thirdButton ){
+            textArea.appendText("Clicked third button!\n");
+        }
+    }
+
+    @FXML
+    private void secondButton(ActionEvent event) {
+        textArea.appendText("Clicked second button!\n");
     }
     
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="gui.controls.FXMLController">
+    <stylesheets>
+        <URL value="@fxml.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <center>
+            <Label fx:id="textLabel" BorderPane.alignment="CENTER" />
+         </center>
+         <left>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <CheckBox fx:id="coffeeCheckBox" mnemonicParsing="false" onAction="#coffeClicked" text="Coffee" />
+                  <RadioButton fx:id="noMilkRadioButton" mnemonicParsing="false" selected="true" text="No milk" visible="false">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="milk" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="skimMilkRadioButton" mnemonicParsing="false" text="Skim milk" toggleGroup="$milk" visible="false" />
+                  <RadioButton fx:id="wholeMilkRadioButton" mnemonicParsing="false" text="Whole milk" toggleGroup="$milk" visible="false" />
+                  <RadioButton fx:id="soyMilkRadioButton" mnemonicParsing="false" text="Soy milk" toggleGroup="$milk" visible="false" />
+                  <RadioButton fx:id="coconutMilkRadioButton" mnemonicParsing="false" text="Coconut milk" toggleGroup="$milk" visible="false" />
+                  <CheckBox fx:id="espressoCheckBox" mnemonicParsing="false" onAction="#espressoClicked" text="Espresso" />
+                  <RadioButton fx:id="espressoNoMilk" mnemonicParsing="false" selected="true" text="No milk" visible="false">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="espressoMilk" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="espressoSkimMilk" mnemonicParsing="false" text="Skim milk" toggleGroup="$espressoMilk" visible="false" />
+                  <RadioButton fx:id="espressoWholeMilk" mnemonicParsing="false" text="Whole milk" toggleGroup="$espressoMilk" visible="false" />
+                  <RadioButton fx:id="espressoSoyMilk" mnemonicParsing="false" text="Soy milk" toggleGroup="$espressoMilk" visible="false" />
+                  <RadioButton fx:id="espressoCoconutMilk" mnemonicParsing="false" text="Coconut milk" toggleGroup="$espressoMilk" visible="false" />
+                  <CheckBox fx:id="teaCheckBox" mnemonicParsing="false" onAction="#teaClicked" text="Tea" />
+                  <RadioButton fx:id="teaNoMilk" mnemonicParsing="false" selected="true" text="No milk" visible="false">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="teaMilk" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="teaSkimMilk" mnemonicParsing="false" text="Skim milk" toggleGroup="$teaMilk" visible="false" />
+                  <RadioButton fx:id="teaWholeMilk" mnemonicParsing="false" text="Whole milk" toggleGroup="$teaMilk" visible="false" />
+                  <RadioButton fx:id="teaSoyMilk" mnemonicParsing="false" text="Soy milk" toggleGroup="$teaMilk" visible="false" />
+                  <RadioButton fx:id="teaCoconutMilk" mnemonicParsing="false" text="Coconut milk" toggleGroup="$teaMilk" visible="false" />
+                  <CheckBox fx:id="bagelCheckBox" mnemonicParsing="false" text="Bagel" />
+                  <CheckBox fx:id="donutCheckBox" mnemonicParsing="false" text="Donuts" />
+               </children>
+            </VBox>
+         </left>
+         <bottom>
+            <Button fx:id="checkoutButton" mnemonicParsing="false" onAction="#checkOutClicked" text="Checkout" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
