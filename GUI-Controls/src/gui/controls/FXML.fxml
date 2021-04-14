@@ -4,13 +4,17 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="gui.controls.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controls.FXMLController">
     <stylesheets>
         <URL value="@fxml.css" />
     </stylesheets>
@@ -20,9 +24,9 @@
             <Label fx:id="textLabel" BorderPane.alignment="CENTER" />
          </center>
          <left>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="374.0" prefWidth="153.0" BorderPane.alignment="CENTER">
                <children>
-                  <CheckBox fx:id="coffeeCheckBox" mnemonicParsing="false" onAction="#coffeClicked" text="Coffee" />
+                  <CheckBox fx:id="coffeeCheckBox" mnemonicParsing="false" onAction="#coffeClicked" text="Coffee - $1.00" />
                   <RadioButton fx:id="noMilkRadioButton" mnemonicParsing="false" selected="true" text="No milk" visible="false">
                      <toggleGroup>
                         <ToggleGroup fx:id="milk" />
@@ -30,9 +34,9 @@
                   </RadioButton>
                   <RadioButton fx:id="skimMilkRadioButton" mnemonicParsing="false" text="Skim milk" toggleGroup="$milk" visible="false" />
                   <RadioButton fx:id="wholeMilkRadioButton" mnemonicParsing="false" text="Whole milk" toggleGroup="$milk" visible="false" />
-                  <RadioButton fx:id="soyMilkRadioButton" mnemonicParsing="false" text="Soy milk" toggleGroup="$milk" visible="false" />
-                  <RadioButton fx:id="coconutMilkRadioButton" mnemonicParsing="false" text="Coconut milk" toggleGroup="$milk" visible="false" />
-                  <CheckBox fx:id="espressoCheckBox" mnemonicParsing="false" onAction="#espressoClicked" text="Espresso" />
+                  <RadioButton fx:id="soyMilkRadioButton" mnemonicParsing="false" text="Soy milk + $.50" toggleGroup="$milk" visible="false" />
+                  <RadioButton fx:id="coconutMilkRadioButton" mnemonicParsing="false" text="Coconut milk + $.50" toggleGroup="$milk" visible="false" />
+                  <CheckBox fx:id="espressoCheckBox" mnemonicParsing="false" onAction="#espressoClicked" text="Espresso - $2.00" />
                   <RadioButton fx:id="espressoNoMilk" mnemonicParsing="false" selected="true" text="No milk" visible="false">
                      <toggleGroup>
                         <ToggleGroup fx:id="espressoMilk" />
@@ -40,9 +44,9 @@
                   </RadioButton>
                   <RadioButton fx:id="espressoSkimMilk" mnemonicParsing="false" text="Skim milk" toggleGroup="$espressoMilk" visible="false" />
                   <RadioButton fx:id="espressoWholeMilk" mnemonicParsing="false" text="Whole milk" toggleGroup="$espressoMilk" visible="false" />
-                  <RadioButton fx:id="espressoSoyMilk" mnemonicParsing="false" text="Soy milk" toggleGroup="$espressoMilk" visible="false" />
-                  <RadioButton fx:id="espressoCoconutMilk" mnemonicParsing="false" text="Coconut milk" toggleGroup="$espressoMilk" visible="false" />
-                  <CheckBox fx:id="teaCheckBox" mnemonicParsing="false" onAction="#teaClicked" text="Tea" />
+                  <RadioButton fx:id="espressoSoyMilk" mnemonicParsing="false" text="Soy milk + $.50" toggleGroup="$espressoMilk" visible="false" />
+                  <RadioButton fx:id="espressoCoconutMilk" mnemonicParsing="false" text="Coconut milk + $.50" toggleGroup="$espressoMilk" visible="false" />
+                  <CheckBox fx:id="teaCheckBox" mnemonicParsing="false" onAction="#teaClicked" text="Tea - $1.50" />
                   <RadioButton fx:id="teaNoMilk" mnemonicParsing="false" selected="true" text="No milk" visible="false">
                      <toggleGroup>
                         <ToggleGroup fx:id="teaMilk" />
@@ -50,16 +54,33 @@
                   </RadioButton>
                   <RadioButton fx:id="teaSkimMilk" mnemonicParsing="false" text="Skim milk" toggleGroup="$teaMilk" visible="false" />
                   <RadioButton fx:id="teaWholeMilk" mnemonicParsing="false" text="Whole milk" toggleGroup="$teaMilk" visible="false" />
-                  <RadioButton fx:id="teaSoyMilk" mnemonicParsing="false" text="Soy milk" toggleGroup="$teaMilk" visible="false" />
-                  <RadioButton fx:id="teaCoconutMilk" mnemonicParsing="false" text="Coconut milk" toggleGroup="$teaMilk" visible="false" />
-                  <CheckBox fx:id="bagelCheckBox" mnemonicParsing="false" text="Bagel" />
-                  <CheckBox fx:id="donutCheckBox" mnemonicParsing="false" text="Donuts" />
+                  <RadioButton fx:id="teaSoyMilk" mnemonicParsing="false" text="Soy milk + $.50" toggleGroup="$teaMilk" visible="false" />
+                  <RadioButton fx:id="teaCoconutMilk" mnemonicParsing="false" text="Coconut milk + $.50" toggleGroup="$teaMilk" visible="false" />
+                  <CheckBox fx:id="bagelCheckBox" mnemonicParsing="false" text="Bagel - $.75" />
+                  <CheckBox fx:id="donutCheckBox" mnemonicParsing="false" text="Donuts - $1.25" />
                </children>
             </VBox>
          </left>
          <bottom>
-            <Button fx:id="checkoutButton" mnemonicParsing="false" onAction="#checkOutClicked" text="Checkout" BorderPane.alignment="CENTER" />
+            <VBox alignment="TOP_CENTER" prefHeight="72.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="checkoutButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#checkOutClicked" text="Checkout" />
+                  <TextField fx:id="cardNumberTextField" promptText="enter card # here" />
+                  <Button fx:id="payButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#payButtonClicked" text="Pay" />
+               </children>
+            </VBox>
          </bottom>
+         <top>
+            <HBox alignment="CENTER" prefHeight="29.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="sugarSliderLabel" text="Sugar " />
+                  <Slider fx:id="sugarSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+               </children>
+            </HBox>
+         </top>
+         <right>
+            <ListView fx:id="listView" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>

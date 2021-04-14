@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gui.controls;
 
 import java.net.URL;
@@ -13,15 +9,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
-/**
- * FXML Controller class
- *
- * @author EricC
- */
 public class FXMLController implements Initializable {
+
+    double totalCost;
+    double coffeeCost;
+    double espressoCost;
+    double teaCost;
 
     @FXML
     private CheckBox coffeeCheckBox;
@@ -74,29 +73,53 @@ public class FXMLController implements Initializable {
     @FXML
     private RadioButton noMilkRadioButton;
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private TextField cardNumberTextField;
+    @FXML
+    private Button payButton;
+    @FXML
+    private Label sugarSliderLabel;
+    @FXML
+    private Slider sugarSlider;
+    @FXML
+    private ListView<String> listView;
+
+    // initialize anything not fxml in the constructor
+    public FXMLController() {
+        totalCost = 0;
+        coffeeCost = 0;
+        espressoCost = 0;
+        teaCost = 0;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        payButton.setVisible(false);
+        cardNumberTextField.setVisible(false);
+        sugarSlider.setVisible(false);
+        sugarSliderLabel.setVisible(false);
+        listView.getItems().addAll("In store pickup", "curside order", "delivery");
     }
 
     @FXML
     private void checkOutClicked(ActionEvent event) {
         String labelText = "";
-        double totalCost = 0;
+        totalCost = 0;
+        coffeeCost = 1;
+        espressoCost = 2;
+        teaCost = 1.5;
         if (coffeeCheckBox.isSelected()) {
-            labelText += "Coffee " + coffeeGotMilk() + " $1.00\n";
-            totalCost += 1;
+            labelText += String.format("Coffee %s $%.2f\n", coffeeGotMilk(), coffeeCost);
+            totalCost += coffeeCost;
         }
         if (espressoCheckBox.isSelected()) {
-            labelText += "Espresso " + espressoGotMilk() + " $2.00\n";
-            totalCost += 2;
+            labelText += String.format("Espresso %s $%.2f\n", espressoGotMilk(), espressoCost);
+            totalCost += espressoCost;
         }
         if (teaCheckBox.isSelected()) {
-            labelText += "Tea " + teaGotMilk() + " $1.50\n";
-            totalCost += 1.5;
+            labelText += String.format("Tea %s $%.2f\n", teaGotMilk(), teaCost);
+            totalCost += teaCost;
         }
         if (bagelCheckBox.isSelected()) {
             labelText += "Bagel $.75\n";
@@ -106,8 +129,15 @@ public class FXMLController implements Initializable {
             labelText += "Donut $1.25\n";
             totalCost += 1.25;
         }
-        labelText += "Total Cost: $" + totalCost;
+        labelText += String.format("Total Cost: $%.2f\n", totalCost);
+        
+        labelText += "order for " + listView.getSelectionModel().getSelectedItem();
+        
         textLabel.setText(labelText);
+        payButton.setVisible(true);
+        cardNumberTextField.setVisible(true);
+        cardNumberTextField.clear();
+        cardNumberTextField.setPromptText("Enter your card #");
     }
 
     private String coffeeGotMilk() {
@@ -118,14 +148,16 @@ public class FXMLController implements Initializable {
             return "with whole milk";
         }
         if (soyMilkRadioButton.isSelected()) {
-            return "with soy milk";
+            coffeeCost += .5;
+            return "with soy milk +($.50) ";
         }
         if (coconutMilkRadioButton.isSelected()) {
-            return "with coconut milk";
+            coffeeCost += .5;
+            return "with coconut milk +($.50) ";
         }
         return "";
     }
-    
+
     private String espressoGotMilk() {
         if (espressoSkimMilk.isSelected()) {
             return "with skim milk";
@@ -134,14 +166,16 @@ public class FXMLController implements Initializable {
             return "with whole milk";
         }
         if (espressoSoyMilk.isSelected()) {
-            return "with soy milk";
+            espressoCost += .5;
+            return "with soy milk +($.50) ";
         }
         if (espressoCoconutMilk.isSelected()) {
-            return "with coconut milk";
+            espressoCost += .5;
+            return "with coconut milk +($.50) ";
         }
         return "";
     }
-    
+
     private String teaGotMilk() {
         if (teaSkimMilk.isSelected()) {
             return "with skim milk";
@@ -150,10 +184,12 @@ public class FXMLController implements Initializable {
             return "with whole milk";
         }
         if (teaSoyMilk.isSelected()) {
-            return "with soy milk";
+            teaCost += .5;
+            return "with soy milk +($.50) ";
         }
         if (teaCoconutMilk.isSelected()) {
-            return "with coconut milk";
+            teaCost += .5;
+            return "with coconut milk +($.50) ";
         }
         return "";
     }
@@ -165,6 +201,10 @@ public class FXMLController implements Initializable {
         wholeMilkRadioButton.setVisible(coffeeCheckBox.isSelected());
         soyMilkRadioButton.setVisible(coffeeCheckBox.isSelected());
         coconutMilkRadioButton.setVisible(coffeeCheckBox.isSelected());
+        
+        // would be nice to have a slider for each beverage type
+        sugarSlider.setVisible(true);
+        sugarSliderLabel.setVisible(true);
     }
 
     @FXML
@@ -175,6 +215,9 @@ public class FXMLController implements Initializable {
         espressoSoyMilk.setVisible(espressoCheckBox.isSelected());
         espressoCoconutMilk.setVisible(espressoCheckBox.isSelected());
         
+        // would be nice to have a slider for each beverage type
+        sugarSlider.setVisible(true);
+        sugarSliderLabel.setVisible(true);
     }
 
     @FXML
@@ -185,6 +228,15 @@ public class FXMLController implements Initializable {
         teaSoyMilk.setVisible(teaCheckBox.isSelected());
         teaCoconutMilk.setVisible(teaCheckBox.isSelected());
         
+        // would be nice to have a slider for each beverage type
+        sugarSlider.setVisible(true);
+        sugarSliderLabel.setVisible(true);
+    }
+
+    @FXML
+    private void payButtonClicked(ActionEvent event) {
+        cardNumberTextField.clear();
+        cardNumberTextField.setPromptText("Thanks!");
     }
 
 }
