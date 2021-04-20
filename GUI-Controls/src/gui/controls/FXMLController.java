@@ -95,7 +95,7 @@ public class FXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        payButton.setVisible(false);
+        payButton.setDisable(true);
         cardNumberTextField.setVisible(false);
         sugarSlider.setVisible(false);
         sugarSliderLabel.setVisible(false);
@@ -134,7 +134,7 @@ public class FXMLController implements Initializable {
         labelText += "order for " + listView.getSelectionModel().getSelectedItem();
         
         textLabel.setText(labelText);
-        payButton.setVisible(true);
+        payButton.setDisable(false);
         cardNumberTextField.setVisible(true);
         cardNumberTextField.clear();
         cardNumberTextField.setPromptText("Enter your card #");
